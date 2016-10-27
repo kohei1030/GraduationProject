@@ -37,21 +37,28 @@ public class Score : MonoBehaviour
         _rankingScore = new List<int>() { 0, 0, 0 };
     }
 
-    void Update()
+    // タイトル用アップデート
+    public void TitleUpdate()
     {
-        // ゲーム開始時
-        // DispHighScore();
+        DispHighScore();
+    }
 
-        // ゲーム中
-        IncreaseScore(900);
+    // ゲーム本編用アップデート
+    public void GameUpdate()
+    {
+        IncreaseScore(0);
         DispScore();
+    }
 
-        // ゲーム終了時
-        // SortingHighScore();
-        // DispResult();
+    // リザルト用アップデート
+    public void ResultUpdate()
+    {
+        SortingHighScore();
+        DispResult();
     }
 
     // スコア加算
+    // plusScore : 敵を倒した際に手に入るスコアの値
     public void IncreaseScore(int plusScore)
     {
         // もし敵を倒したらに変える
@@ -74,7 +81,7 @@ public class Score : MonoBehaviour
             // 限界値突破防止
             // 例として、100スコア取った際、7ずつ増えるので
             // 70,77,84,91,98,105とオーバーしてしまうのを防ぐため
-            if(_currentScore > _toScore)
+            if (_currentScore > _toScore)
             {
                 _currentScore = _toScore;
             }
@@ -88,7 +95,7 @@ public class Score : MonoBehaviour
     }
 
     // ハイスコアをソートする
-    public void SortingHighScore()
+    void SortingHighScore()
     {
         // スコアを追加して、Listをソートする
         _rankingScore.Add(_currentScore);
@@ -96,7 +103,7 @@ public class Score : MonoBehaviour
     }
 
     // ３位までのハイスコアを表示する
-    public void DispHighScore()
+    void DispHighScore()
     {
         _dispHighScore.text =
             "Rank1 : " + _rankingScore[0] + "\n" +
