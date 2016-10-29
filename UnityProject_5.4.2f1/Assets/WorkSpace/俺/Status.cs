@@ -24,6 +24,14 @@ public class Status : MonoBehaviour {
 	[SerializeField]
     private int _life = 1;
 
+    //攻撃力
+    [SerializeField]
+    private int _attackVal = 1;
+    public int GetAttackVal()
+    {
+        return _attackVal;
+    }
+
     public void SubLife(int damage)
     {
         if (_life > 0)

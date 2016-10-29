@@ -3,12 +3,15 @@ using System.Collections;
 
 public class Move : MonoBehaviour
 {
+    //プレイヤーオブジェクト
+    private PlayerScript _player;
 
     private Status _enemyStatus;
 
     private void Start()
     {
         _enemyStatus = GetComponent<Status>();
+        _player = FindObjectOfType<PlayerScript>();
     }
 
     private void Update()
@@ -19,16 +22,17 @@ public class Move : MonoBehaviour
         //移動
         rigid.AddForce(moveForce);
     }
-
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
         //被弾
-        if (collision.gameObject.tag == "Shot")
+        if (collider.gameObject.tag == "Shot")
         {
             _enemyStatus.SubLife(1);
+            Debug.Log("被弾した！！");
         }
+
         //攻撃
-        if (collision.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player")
         {
             //デバックログ
             Debug.Log("エネミーくん渾身の一撃");
@@ -36,7 +40,7 @@ public class Move : MonoBehaviour
             Destroy(gameObject);
 
             //プレイヤーのライフを減らす関数を呼ぶ
-
+            _player.SubLife(_enemyStatus.GetAttackVal());
         }
     }
 }
