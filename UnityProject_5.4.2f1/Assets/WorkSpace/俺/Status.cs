@@ -6,6 +6,13 @@ using System.Collections;
 
 public class Status : MonoBehaviour {
 
+    //スコアオブジェクト
+    private Score _score;
+
+    //スコア
+    [SerializeField]
+    private int _scoreOwn = 100;
+
     //移動速度
 	[SerializeField]
 	private float _moveSpeed = 1;
@@ -16,10 +23,6 @@ public class Status : MonoBehaviour {
     //ライフ
 	[SerializeField]
     private int _life = 1;
-	public int GetLife()
-    {
-		return _life;
-	}
 
     public void SubLife(int damage)
     {
@@ -45,15 +48,18 @@ public class Status : MonoBehaviour {
     {
         this.tag = "Enemy";
         _rigidbody = GetComponent<Rigidbody>();
+
+        _score = FindObjectOfType<Score>();
     }
 
     //消滅
     private void DestroyOwn()
     {
         //デバックログ
-        Debug.Log("エネミーくん無念の戦死");
+        Debug.Log(_scoreOwn + "のエネミー死亡");
 
         //スコア加算関数呼び出し
+        _score.AddScoreForEnemy(_scoreOwn);
 
         //消滅
         Destroy(gameObject);

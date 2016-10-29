@@ -36,6 +36,7 @@ public class Move : MonoBehaviour
             Destroy(gameObject);
 
             //プレイヤーのライフを減らす関数を呼ぶ
+
         }
     }
 }
