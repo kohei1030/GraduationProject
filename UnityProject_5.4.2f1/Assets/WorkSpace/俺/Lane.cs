@@ -23,10 +23,10 @@ public class Lane : MonoBehaviour
     }
 
 
-    void Start()
+    void Awake()
     {
         _player = FindObjectOfType<PlayerScript>();
-        _lanePos = new List<int>() { };
+        _lanePos = new List<int>() {};
 
         //ポジションの計算
         int playerScaleX = (int)_player.GetScale().x;
@@ -34,6 +34,7 @@ public class Lane : MonoBehaviour
         {
             int pos = ((playerScaleX / (_lane * 2)) * (i * 2 + 1)) + (playerScaleX / 2 * -1);
             _lanePos.Add(pos);
+            Debug.Log(_lanePos[i]);
         }
     }
 }
