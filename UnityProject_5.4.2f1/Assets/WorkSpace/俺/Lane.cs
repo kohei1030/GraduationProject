@@ -34,7 +34,6 @@ public class Lane : MonoBehaviour
         {
             int pos = ((playerScaleX / (_lane * 2)) * (i * 2 + 1)) + (playerScaleX / 2 * -1);
             _lanePos.Add(pos);
-            Debug.Log(_lanePos[i]);
         }
     }
 }

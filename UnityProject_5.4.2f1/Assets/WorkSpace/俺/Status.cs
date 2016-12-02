@@ -32,6 +32,10 @@ public class Status : MonoBehaviour {
         return _attackVal;
     }
 
+    //消滅時のエフェクト
+    [SerializeField]
+    ParticleSystem _destroyParticle;
+
     public void SubLife(int damage)
     {
         if (_life > 0)
@@ -63,12 +67,12 @@ public class Status : MonoBehaviour {
     //消滅
     private void DestroyOwn()
     {
-        //デバックログ
-        Debug.Log(_scoreOwn + "のエネミー死亡");
-
         //スコア加算関数呼び出し
         _score.AddScoreForEnemy(_scoreOwn);
 
+        //消滅エフェクト
+        ParticleSystem particle = Instantiate(_destroyParticle);
+        particle.transform.position = this.transform.position;
         //消滅
         Destroy(gameObject);
     }

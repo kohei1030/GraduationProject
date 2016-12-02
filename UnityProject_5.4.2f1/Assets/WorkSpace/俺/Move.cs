@@ -28,15 +28,11 @@ public class Move : MonoBehaviour
         if (collider.gameObject.tag == "Shot")
         {
             _enemyStatus.SubLife(1);
-            Debug.Log("被弾した！！");
         }
 
         //攻撃
         if (collider.gameObject.tag == "Player")
         {
-            //デバックログ
-            Debug.Log("エネミーくん渾身の一撃");
-
             Destroy(gameObject);
 
             //プレイヤーのライフを減らす関数を呼ぶ

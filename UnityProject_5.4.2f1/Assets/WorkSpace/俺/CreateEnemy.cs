@@ -36,7 +36,6 @@ public class CreateEnemy : MonoBehaviour {
             //エネミー生成
             _randomInt = Random.Range((int)0, (int)_lane.GetLaneNum());
             Vector3 pos = new Vector3(_lanePos[_randomInt], _DEFAULT_POS_Y, 0);
-            Debug.Log("僕の場所は" + pos);
             Instantiate(enemyObject, pos, new Quaternion(0, 0, 0, 0));
         }
 	}
