@@ -6,34 +6,53 @@ public class Lane : MonoBehaviour
 {
 
     private PlayerScript _player;
+    [SerializeField]
+    private GameObject _LaneObj;
 
     //レーン数
     [SerializeField]
-    private int _lane = 4;
+    private int _laneCount = 4;
     public int GetLaneNum()
     {
-        return _lane;
+        return _laneCount;
     }
 
+
     //レーンごとのポジション
-    private List<int> _lanePos;
-    public List<int> GetLaneList()
+    private List<Vector3> _lanePos;
+    public List<Vector3> GetLaneList()
     {
         return _lanePos;
     }
 
+    private float _laneSizeY;
+    public float GetLaneSizeY()
+    {
+        return _laneSizeY;
+    }
 
     void Awake()
     {
         _player = FindObjectOfType<PlayerScript>();
-        _lanePos = new List<int>() {};
+        _lanePos = new List<Vector3>() { };
 
         //ポジションの計算
-        int playerScaleX = (int)_player.GetScale().x;
-        for (int i = 0; i < _lane; i++)
+        float playerScaleX = _player.GetScale().x;
+        Vector3 playerPos = _player.transform.position;
+        for (int i = 0; i < _laneCount; i++)
         {
-            int pos = ((playerScaleX / (_lane * 2)) * (i * 2 + 1)) + (playerScaleX / 2 * -1);
-            _lanePos.Add(pos);
+            float pos = ((playerScaleX / ((float)_laneCount * 2)) * (i * 2 + 1)) + (playerScaleX / 2 * -1);
+            _lanePos.Add(new Vector3(pos, playerPos.y, playerPos.z));
+
+
+            //レーン生成
+            GameObject laneObjLeft = Instantiate<GameObject>(_LaneObj);
+            _laneSizeY = laneObjLeft.transform.localScale.y;
+            laneObjLeft.transform.position
+                = new Vector3(playerScaleX * (i / _laneCount) + (playerScaleX / 2 * -1), playerPos.y + (_laneSizeY / 2), playerPos.z);
+            GameObject laneObjRight = Instantiate<GameObject>(_LaneObj);
+            laneObjRight.transform.position
+                = new Vector3(playerScaleX * ((i + 1) / (float)_laneCount) + (playerScaleX / 2 * -1), playerPos.y + (_laneSizeY / 2), playerPos.z);
         }
     }
 }

@@ -12,11 +12,12 @@ public class CreateEnemy : MonoBehaviour {
     [SerializeField]
     float createSpeed = 1;
     private float _time;
-    private const float _DEFAULT_POS_Y = 5;
+    //private const float _DEFAULT_POS_Y = 20;
 
     private int _randomInt;
 
-    private List<int> _lanePos;
+    private List<Vector3> _lanePos;
+    private float _laneSizeY;
 
 	void Start () {
         _time = createSpeed;
@@ -24,6 +25,7 @@ public class CreateEnemy : MonoBehaviour {
         //レーン情報取得
         _lane = FindObjectOfType<Lane>();
         _lanePos = _lane.GetLaneList();
+        _laneSizeY = _lane.GetLaneSizeY();
 	}
 	
 	void Update () {
@@ -35,7 +37,7 @@ public class CreateEnemy : MonoBehaviour {
 
             //エネミー生成
             _randomInt = Random.Range((int)0, (int)_lane.GetLaneNum());
-            Vector3 pos = new Vector3(_lanePos[_randomInt], _DEFAULT_POS_Y, 0);
+            Vector3 pos = _lanePos[_randomInt] + new Vector3(0, _laneSizeY, 0);
             Instantiate(enemyObject, pos, new Quaternion(0, 0, 0, 0));
         }
 	}

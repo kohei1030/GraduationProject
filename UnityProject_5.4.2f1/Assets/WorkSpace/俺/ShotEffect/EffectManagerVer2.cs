@@ -3,10 +3,7 @@ using System.Collections;
 
 public class EffectManagerVer2 : MonoBehaviour
 {
-    bool _play = false;
-
-    [SerializeField]
-    GameObject _Bullet;
+    private bool _play;
 
     private GameObject _topObj;
     [SerializeField]
@@ -19,40 +16,50 @@ public class EffectManagerVer2 : MonoBehaviour
     private int _createLimit = 4;
     private int _createCount = 0;
 
-    private Vector3 _defaultPos = new Vector3(0, -20, 0);
+    private Vector3 _defaultPos = new Vector3(0, 0, 0);
     private Vector3 _angle = new Vector3(0, 0, 60);
     private int _way = 1;
 
     private ParticleSystem _particleSystem;
+    [SerializeField]
+    private float _MAXPOSY;
 
-    void Start()
+    void Awake()
     {
-        _defaultPos = _Bullet.transform.position;
 
         _topObj = Instantiate(_effectObj);
         _topObj.transform.Rotate(_angle);
         _topObj.transform.position = _defaultPos;
+        _topObj.tag = "Shot";
+
+        _play = false;
 
         _count = 0;
+    }
 
+    public void SetDefaltPos(Vector3 pos){
+        _defaultPos = pos;
+        _topObj.transform.position = _defaultPos;
+        _play = true;
+    }
+
+    void Start()
+    {
+        _MAXPOSY = FindObjectOfType<Lane>().GetLaneSizeY();
     }
 
     void Update()
     {
-
-        //バレットの位置に修正
-        if (_defaultPos != _Bullet.transform.position&&!_play)
-        {
-            _defaultPos = _Bullet.transform.position;
-            _topObj.transform.position = _defaultPos;
-            _play = true;
-        }
-
         if (!_play) return;
         _count += Time.deltaTime;
         //if (_count >= _createSpeed)
         for (int i = 0; i < _createSpeed; i++)
         {
+            if (_topObj.transform.position.y >= _MAXPOSY)
+            {
+                Destroy(this.gameObject);
+            }
+
             //次のオブジェを生成＆位置角度調整
             GameObject nextObj = Instantiate(_effectObj);
             float degree = (_angle.z + 90);
@@ -62,7 +69,7 @@ public class EffectManagerVer2 : MonoBehaviour
             float posY = Mathf.Sin(radian) * sizeY;
             Vector3 pos = (new Vector3(posX, posY, 0)) + _topObj.transform.position;
             nextObj.transform.position = pos;
-
+            nextObj.tag = "Shot";
             _topObj = nextObj;
 
             _createCount++;
@@ -81,6 +88,7 @@ public class EffectManagerVer2 : MonoBehaviour
             nextObj.transform.Rotate(_angle);
 
             _particleSystem = _topObj.transform.FindChild("effectObj").FindChild("Particle System").GetComponent<ParticleSystem>();
+            //_particleSystem = _topObj.transform.FindChild("Particle System").GetComponent<ParticleSystem>();
             _particleSystem.startRotation = _way * -1;
         }
     }
