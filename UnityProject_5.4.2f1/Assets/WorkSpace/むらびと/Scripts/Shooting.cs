@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using Common;
+
 public class Shooting : MonoBehaviour {
 
-    public GameObject bullet;
+    [SerializeField]
+    private GameObject _bullet;
     private Lane _lane;
-    private List<int> _lanePos;
+    private List<Vector3> _lanePos;
 
     //public Transform muzzle;
 
@@ -21,18 +24,20 @@ public class Shooting : MonoBehaviour {
     }
 
     void Shoot() {
-        ShootSystem(0, KeyCode.Z);
-        ShootSystem(1, KeyCode.X);
-        ShootSystem(2, KeyCode.C);
-        ShootSystem(3, KeyCode.V);
+        ShootSystem(0, Define.SHOT_KEY1);
+        ShootSystem(1, Define.SHOT_KEY2);
+        ShootSystem(2, Define.SHOT_KEY3);
+        ShootSystem(3, Define.SHOT_KEY4);
     }
 
     private void ShootSystem(int laneNum,KeyCode key)
     {
         if (Input.GetKeyDown(key))
         {
-            GameObject bullets = GameObject.Instantiate(bullet) as GameObject;
-            bullets.transform.position = new Vector3(_lanePos[laneNum],transform.position.y,transform.position.z);
+            GameObject bullet = GameObject.Instantiate(_bullet);
+            EffectManagerVer2 effect = bullet.GetComponent<EffectManagerVer2>();
+            Vector3 pos = _lanePos[laneNum];
+            effect.SetDefaltPos(pos);
         }
     }
 }

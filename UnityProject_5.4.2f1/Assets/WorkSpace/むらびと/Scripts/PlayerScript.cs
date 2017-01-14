@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using Common;
+
 public class PlayerScript : MonoBehaviour {
 
     
@@ -30,6 +32,9 @@ public class PlayerScript : MonoBehaviour {
         {
             GameObject parent = transform.root.gameObject;
             Destroy(parent);
+
+            //シーン切り替え
+            FindObjectOfType<sceneManager>().NextScene(Define.GAME_OVER);
         }
     }
 	void Update () {
