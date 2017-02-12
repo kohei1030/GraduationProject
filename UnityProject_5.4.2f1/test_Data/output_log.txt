@@ -1,0 +1,62 @@
+Initialize engine version: 5.4.2f1 (94e3a60ee258)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics Family (ID=0xa16)
+    Vendor:   Intel
+    VRAM:     1792 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.091 seconds
+Platform assembly: C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\vantan\Desktop\UnityProject_5.4.2f1\test_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 16.874088 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1b98 -> priority: 1 
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.607268 ms
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 333.
+Total: 0.309051 ms (FindLiveObjects: 0.020527 ms CreateObjectMapping: 0.016535 ms MarkObjects: 0.222380 ms  DeleteObjects: 0.047897 ms)
+
+0= _toScore
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+100= _toScore
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+200= _toScore
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+300= _toScore
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+400= _toScore
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+500= _toScore
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.987296 ms
+
+Unloading 67 unused Assets to reduce memory usage. Loaded Objects now: 181.
+Total: 0.362080 ms (FindLiveObjects: 0.026799 ms CreateObjectMapping: 0.021667 ms MarkObjects: 0.149393 ms  DeleteObjects: 0.163078 ms)
+

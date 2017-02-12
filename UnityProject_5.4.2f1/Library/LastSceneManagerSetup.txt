@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/WorkSpace/ore/Scene/mainGame.unity
+  isLoaded: 1
+  isActive: 1
