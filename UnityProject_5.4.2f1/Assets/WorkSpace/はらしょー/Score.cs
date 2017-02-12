@@ -36,8 +36,6 @@ public class Score : MonoBehaviour
     {
         _currentScore = 0;
         _rankingScore = new List<int>() { 0, 0, 0 };
-
-        Debug.Log(_toScore + "= _toScore");
     }
 
     // タイトル用アップデート
@@ -69,7 +67,6 @@ public class Score : MonoBehaviour
     public void AddScoreForEnemy(int addScore)
     {
         _toScore += addScore;
-        Debug.Log( _toScore + "= _toScore");
     }
     
     // スコア加算

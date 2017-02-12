@@ -11,16 +11,35 @@ public class Shooting : MonoBehaviour {
     private Lane _lane;
     private List<Vector3> _lanePos;
 
+    CreateEnemy createEnemy;
+    PlayerScript player;
+
+    bool firstShooted = false;
+
     //public Transform muzzle;
 
     void Start () {
        // Shoot();
         _lane = FindObjectOfType<Lane>();
         _lanePos = _lane.GetLaneList();
+
+        createEnemy = FindObjectOfType<CreateEnemy>();
+        player = FindObjectOfType<PlayerScript>();
     }
 
 	void Update () {
-        Shoot();
+        if (player.GetPlayerHp() > 0) Shoot();
+
+        if (firstShooted) return;
+        if (createEnemy.GetFirstEnemy().transform.position.y <= (_lane.GetLaneSizeY() / 3) * 2)
+        {
+            GameObject bullet = GameObject.Instantiate(_bullet);
+            EffectManagerVer2 effect = bullet.GetComponent<EffectManagerVer2>();
+            Vector3 pos = _lanePos[createEnemy.GetFirstEnemyPos()];
+            effect.SetDefaltPos(pos);
+
+            firstShooted = true;
+        }
     }
 
     void Shoot() {
