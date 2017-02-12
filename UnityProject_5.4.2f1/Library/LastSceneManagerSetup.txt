@@ -1,4 +1,0 @@
-sceneSetups:
-- path: "Assets/WorkSpace/\u4FFA/DebugScene.unity"
-  isLoaded: 1
-  isActive: 1
