@@ -30,14 +30,13 @@ public class Shooting : MonoBehaviour {
 	void Update () {
         if (player.GetPlayerHp() > 0) Shoot();
 
-        if (firstShooted) return;
+        if (firstShooted || createEnemy.GetFirstEnemy() == null) return;
         if (createEnemy.GetFirstEnemy().transform.position.y <= (_lane.GetLaneSizeY() / 3) * 2)
         {
             GameObject bullet = GameObject.Instantiate(_bullet);
             EffectManagerVer2 effect = bullet.GetComponent<EffectManagerVer2>();
             Vector3 pos = _lanePos[createEnemy.GetFirstEnemyPos()];
             effect.SetDefaltPos(pos);
-
             firstShooted = true;
         }
     }

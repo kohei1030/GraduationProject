@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
 
     // 現在プレイ中ゲームのスコア
     static private int _currentScore = 0;
+    public int GetCurrentScore() { return _currentScore; }
     // アニメーション用実スコア
     [SerializeField]
     private int _toScore = 0;
@@ -103,7 +104,7 @@ public class Score : MonoBehaviour
     // スコア表示する
     void DispScore()
     {
-        _dispScore.text = "Score:" + _currentScore;
+        _dispScore.text = "SOCRE:" + _currentScore;
     }
 
     // ハイスコアをソートする
